@@ -49,7 +49,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.clear();
         LatLng spb = new LatLng(59.939095, 30.315868);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(spb));
-        Place main = null;
         Toast.makeText(
                 MapsActivity.this, "Количество предложений - " + ForAll.places.size(),
                 Toast.LENGTH_LONG
@@ -62,10 +61,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnMapClickListener(this);
     }
 
-    public void reRoll() {
-        onMapReady(mMap);
-    }
-
     @Override
     public void onMapClick(LatLng latLng) {
         if (ForAll.best.containsKey(latLng)) {
@@ -74,7 +69,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void showInformation(List<Place> places) {
-        finish();
 //        for (Place place: places) {
 //
 //        }

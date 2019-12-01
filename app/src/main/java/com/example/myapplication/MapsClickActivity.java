@@ -30,7 +30,8 @@ public class MapsClickActivity extends FragmentActivity implements OnMapReadyCal
         setContentView(R.layout.activity_maps_clik);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        mapFragment.getMapAsync((OnMapReadyCallback) this);
+        assert mapFragment != null;
+        mapFragment.getMapAsync(this);
         index = null;
         myBut = (ImageButton) findViewById(R.id.solve);
         myBut.setOnClickListener(this);
@@ -65,7 +66,6 @@ public class MapsClickActivity extends FragmentActivity implements OnMapReadyCal
             case R.id.solve:
                 ForAll.index = this.index;
                 finish();
-                break;
             default:
                 break;
         }

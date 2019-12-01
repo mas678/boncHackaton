@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Head</string>
+    <string name="app_name">Realty</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="action_settings">Settings</string>
@@ -33,7 +33,7 @@
     <string name="Main2">Купить/Арендовать</string>
     <string name="title_activity_try">Tru</string>
     <string-array name="list">
-        <item>Аренда</item>
+        <item>Rent (Аренда)</item>
         <item>Инвестиции</item>
     </string-array>
     <string name="title_activity_settings">Settings</string>

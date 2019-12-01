@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.location.Location;
+import android.util.Log;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,10 +16,11 @@ import java.util.Map;
 
 public class Filters extends AppCompatActivity implements View.OnClickListener {
 
-    Button ok;
-    Button off;
-    CheckBox rent;
-    CheckBox invest;
+    private Button ok;
+    private Button off;
+    private CheckBox rent;
+    private CheckBox invest;
+    private String LOG_TAG = "aaaaaaaaaaaaaaaaaaaaa";
 
     public static double CalculationDistance(LatLng StartP, LatLng EndP) {
         return CalculationDistanceByCoord(StartP.latitude, StartP.longitude, EndP.latitude, EndP.longitude);
@@ -40,64 +42,45 @@ public class Filters extends AppCompatActivity implements View.OnClickListener {
         off.setOnClickListener(this);
         rent = (CheckBox) findViewById(R.id.isBook);
         invest = (CheckBox) findViewById(R.id.isInvest);
+        ForAll.index = null;
+        Intent intent;
+        intent = new Intent(this, MapsClickActivity.class);
+        startActivity(intent);
     }
 
     @Override
     public void onClick(View v) {
+        Intent intent, intent3;
         switch (v.getId()) {
             case R.id.allOff:
                 ForAll.cords = ForAll.best;
-                Intent intent3 = new Intent(this, MapsActivity.class);
+                intent3 = new Intent(this, MapsActivity.class);
                 startActivity(intent3);
                 break;
+            case R.id.activity_to_write_1:
             case R.id.Ok:
                 EditText _radix = findViewById(R.id.activity_to_write_1);
                 EditText _priceFrom = findViewById(R.id.activity_to_write_2);
                 EditText _priceTo = findViewById(R.id.activity_to_write_3);
-                int priceFrom = (int)-1e9;
-                int priceTo = (int)-1e9;
-                int radix = (int) 1e9;
+                int priceFrom;
+                int priceTo;
+                int radix;
                 try {
                     priceFrom = Integer.parseInt(_priceFrom.getText().toString());
+                    radix = Integer.parseInt(_radix.getText().toString());
+                    priceTo = Integer.parseInt(_priceTo.getText().toString());
                 } catch (NumberFormatException e) {
-                    if (_priceFrom.getText().toString().length() != 0) {
                         Toast.makeText(
                                 Filters.this, "Поля заполнены некорректно!",
                                 Toast.LENGTH_LONG
                         ).show();
                         return;
-                    }
                 }
-                try {
-                    radix = Integer.parseInt(_priceFrom.getText().toString());
-                } catch (NumberFormatException e) {
-                    if (_radix.getText().toString().length() != 0) {
-                        Toast.makeText(
-                                Filters.this, "Поля заполнены некорректно!",
-                                Toast.LENGTH_LONG
-                        ).show();
-                        return;
-                    }
-                }
-                try {
-                    priceTo = Integer.parseInt(_priceFrom.getText().toString());
-                } catch (NumberFormatException e) {
-                    if (_priceTo.getText().toString().length() != 0) {
-                        Toast.makeText(
-                                Filters.this, "Поля заполнены некорректно!",
-                                Toast.LENGTH_LONG
-                        ).show();
-                        return;
-                    }
-                }
-                Intent intent;
-                intent = new Intent(this, MapsClickActivity.class);
-                startActivity(intent);
                 ForAll.cords = new HashMap<>();
                 for (Map.Entry<LatLng, List<Place>> placeList : ForAll.best.entrySet()) {
                     for (Place place : placeList.getValue()) {
-                        if ((place.getInvest() && invest.isChecked())
-                                || (!place.getInvest() && rent.isChecked())) {
+                        if ((place.getInvest() && !rent.isChecked())
+                                || (!place.getInvest() && !invest.isChecked())) {
                             if ((place.getPrice() > priceTo) || (place.getPrice() < priceFrom)
                                     || (radix < CalculationDistance(ForAll.index, place.getCords()))) {
                                 continue;
@@ -111,8 +94,8 @@ public class Filters extends AppCompatActivity implements View.OnClickListener {
                         }
                     }
                 }
-                Intent intent1 = new Intent(this, MapsActivity.class);
-                startActivity(intent1);
+                intent3 = new Intent(this, MapsActivity.class);
+                startActivity(intent3);
                 break;
             default:
                 break;
