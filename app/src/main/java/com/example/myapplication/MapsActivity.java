@@ -50,7 +50,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng spb = new LatLng(59.939095, 30.315868);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(spb));
         Toast.makeText(
-                MapsActivity.this, "Количество предложений - " + ForAll.places.size(),
+                MapsActivity.this, "Количество предложений - " + ForAll.cords.size(),
                 Toast.LENGTH_LONG
         ).show();
         for (LatLng key: ForAll.cords.keySet()) {
