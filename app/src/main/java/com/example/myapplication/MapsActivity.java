@@ -33,15 +33,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+        assert mapFragment != null;
         mapFragment.getMapAsync(this);
         myBut = (ImageButton) findViewById(R.id.filter);
         myBut.setOnClickListener(this);
-        ForAll.cords = ForAll.best;
-        ForAll.cords = ForAll.best;
     }
 
     public List<Place> getMyPlace(LatLng cord) {
-        return ForAll.cords.get(cord);
+        return ForAll.best.get(cord);
     }
 
     @Override
@@ -69,11 +68,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMapClick(LatLng latLng) {
-        if (!ForAll.cords.containsKey(latLng)) {
-            Intent intent = new Intent(this, Try.class);
-            startActivity(intent);
-        } else {
-            showInformation(ForAll.cords.get(latLng));
+        if (ForAll.best.containsKey(latLng)) {
+            showInformation(ForAll.best.get(latLng));
         }
     }
 
@@ -87,9 +83,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.filter) {
-            Intent intent = new Intent(this, Filters.class);
-            startActivity(intent);
-            onMapReady(mMap);
+            finish();
         }
     }
 }

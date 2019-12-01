@@ -13,4 +13,5 @@ class ForAll {
     static Map<LatLng, List<Place>> cords;
     static Map<LatLng, List<Place>> best;
     static LatLng index;
+    static Integer rad;
 }

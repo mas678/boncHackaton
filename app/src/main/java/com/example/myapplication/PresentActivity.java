@@ -90,7 +90,7 @@ public class PresentActivity extends AppCompatActivity {
             return;
         }
         Place my = new Place(name, phone, ForAll.index,
-                floor, area, "Nope", price, comment, spinner.equals("Аренда"));
+                floor, area, spinner, price, comment, spinner.charAt(0) == 'A');
         insert(my);
         finish();
     }

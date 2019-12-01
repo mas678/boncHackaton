@@ -111,6 +111,6 @@
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="allOff">Выключить фильтры</string>
     <string name="Ok">Применить</string>
-    <string name="isBook">Искать арнду</string>
-    <string name="isInvest">Искать инвестиции</string>
+    <string name="isBook">Не искать аренду</string>
+    <string name="isInvest">Не искать инвестиции</string>
 </resources>

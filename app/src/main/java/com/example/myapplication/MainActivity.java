@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.search:
-                intent = new Intent(this, MapsActivity.class);
+                intent = new Intent(this, Filters.class);
                 startActivity(intent);
                 break;
             default:

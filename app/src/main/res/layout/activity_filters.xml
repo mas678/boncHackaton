@@ -7,36 +7,121 @@
         android:layout_height="match_parent"
         tools:context=".Filters">
 
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/start_line3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="70dp"
+    />
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/end_line4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="70dp"
+    />
+    <CheckBox
+            android:background="@drawable/button"
+            android:text="@string/isInvest"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="142dp"
+            android:id="@+id/isInvest"
+            tools:ignore="MissingConstraints"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/isBook"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toEndOf="@id/start_line3"
+            app:layout_constraintEnd_toStartOf="@id/end_line4"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.534"/>
+
+    <CheckBox
+            android:background="@drawable/button"
+            app:layout_constraintStart_toEndOf="@id/start_line3"
+            app:layout_constraintEnd_toStartOf="@id/end_line4"
+            android:text="@string/isBook"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/isBook"
+            tools:ignore="MissingConstraints"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/isInvest"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toTopOf="@id/activity_to_write_1"
+            android:layout_marginRight="8dp"
+    />
+    <EditText
+            android:id="@+id/activity_to_write_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/isBook"
+            app:layout_constraintStart_toEndOf="@id/start_line3"
+            app:layout_constraintEnd_toStartOf="@id/end_line4"
+            app:layout_constraintBottom_toTopOf="@id/activity_to_write_2"
+            android:hint="Введите желаемый радиус поиска"
+            android:textSize="30dp"
+            android:background="@drawable/fields"
+            android:textColor="@android:color/white"
+    />
+    <EditText
+            android:id="@+id/activity_to_write_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/activity_to_write_1"
+            app:layout_constraintStart_toEndOf="@id/start_line3"
+            app:layout_constraintEnd_toStartOf="@id/activity_to_write_3"
+            app:layout_constraintBottom_toTopOf="@id/allOff"
+            android:hint="Цена от"
+            android:textSize="30dp"
+            android:background="@drawable/fields"
+            android:textColor="@android:color/white"
+    />
+    <EditText
+            android:id="@+id/activity_to_write_3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/activity_to_write_2"
+            app:layout_constraintStart_toEndOf="@id/activity_to_write_2"
+            app:layout_constraintEnd_toStartOf="@id/end_line4"
+            app:layout_constraintBottom_toBottomOf="@id/activity_to_write_2"
+            android:hint="Цена до"
+            android:textSize="30dp"
+            android:background="@drawable/fields"
+            android:textColor="@android:color/white"
+    />
     <Button
+            android:background="@drawable/button"
+            app:layout_constraintStart_toEndOf="@id/start_line3"
+            app:layout_constraintEnd_toStartOf="@id/end_line4"
             android:text="@string/allOff"
             android:id="@+id/allOff"
-            android:layout_width="203dp"
-            android:layout_height="wrap_content" tools:layout_editor_absoluteY="597dp"
-            tools:ignore="MissingConstraints"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"/>
-    <Button
-            android:text="@string/Ok"
-            android:layout_width="116dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/Ok" tools:ignore="MissingConstraints" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
-            app:layout_constraintStart_toEndOf="@+id/allOff" android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintTop_toBottomOf="@id/activity_to_write_2"
+            app:layout_constraintBottom_toTopOf="@id/Ok"
+    />
+    <Button
+            android:background="@drawable/button"
+            app:layout_constraintStart_toEndOf="@id/start_line3"
+            app:layout_constraintEnd_toStartOf="@id/end_line4"
+            android:text="@string/Ok"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/Ok"
+            tools:ignore="MissingConstraints"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintTop_toBottomOf="@id/allOff"
             app:layout_constraintBottom_toBottomOf="parent"/>
-    <CheckBox
-            android:text="@string/isBook"
-            android:layout_width="170dp"
-            android:layout_height="46dp"
-            android:id="@+id/isBook" tools:ignore="MissingConstraints"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/isInvest" android:layout_marginRight="8dp"/>
-    <CheckBox
-            android:text="@string/isInvest"
-            android:layout_width="169dp"
-            android:layout_height="47dp"
-            tools:layout_editor_absoluteX="142dp" android:id="@+id/isInvest" tools:ignore="MissingConstraints"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/Ok"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/isBook"
-            app:layout_constraintVertical_bias="0.534"/>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
